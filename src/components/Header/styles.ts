@@ -25,5 +25,9 @@ export const Content = styled.div`
       &:hover{
           filter: brightness(0.9)
       }
+      &:active{
+        filter:brightness(1.1)
+      }
+
   }
 `;
