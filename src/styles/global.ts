@@ -2,17 +2,18 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     :root {
-        --background: #f0f2f5
-        --red:#e52e4d
-        --blue:#5429cc
+        --background: #f0f2f5;
+        --red: #e52e4d;
+        --blue: #5429cc;
+        --green: #33cc95;
 
-        --blue-light:#6933ff
+        --blue-light: #6933ff;
 
-        --text-title:#363f5f
-        --text-body:#969cb3
+        --text-title: #363f5f;
+        --text-body: #969cb3;
         
-        --bckground:#f0f2f5
-        --shape:#ffffff
+        --bckground: #f0f2f5;
+        --shape: #ffffff;
     }
 
     * {
@@ -53,5 +54,4 @@ export const GlobalStyle = createGlobalStyle`
         opacity: 0.6;
         cursor: not-allowed;
     }
-
-`
+`;
