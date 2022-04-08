@@ -1,22 +1,16 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { api } from "../../services/api"
+import { TransactionContext } from "../../TransactionsContext";
 import { Container } from "./styles"
 
-type Transaction = {
-    id: number;
-    title: string;
-    amount: number;
-    type: string;
-    category: string;
-    createdAt: string;
-}
 
 export const TransactionsTable = () => {
-    const [transactions, setTransactions] = useState<Transaction[]>([]);
+    const { data } = useContext(TransactionContext);
     useEffect(() => {
-        api('transactions')
-            .then(response => setTransactions(response.data.transactions))
-    }, [])
+        console.log(data);
+    }, [data])
+
+
 
     return (
         <Container>
@@ -30,11 +24,12 @@ export const TransactionsTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {transactions.map(tran => (<tr key={tran.id}>
+                    {data.map(tran => (<tr key={tran.id}>
+                        <td>{tran.id}</td>
                         <td>{tran.title}</td>
                         <td className={tran.type}> {new Intl.NumberFormat('pt-Br', { style: 'currency', currency: 'BRL' }).format(tran.amount)}</td>
                         <td>{tran.category}</td>
-                        <td className={tran.type}> {new Intl.DateTimeFormat('pt-Br').format(new Date(tran.createdAt))}</td>
+                        <td className={tran.type}> {new Intl.DateTimeFormat('pt-Br').format(new Date(tran.createdAt!))}</td>
                     </tr>))}
                 </tbody>
             </table>
