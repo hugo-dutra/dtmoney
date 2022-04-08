@@ -5,14 +5,14 @@ import { Container, TransactionTypeContainer, RadioBox } from './styles';
 import incomeImg from '../../assets/Entradas.svg';
 import outcomeImg from '../../assets/Saídas.svg';
 import { api } from '../../services/api';
-import { TransactionContext, TransactionType } from '../../TransactionsContext';
+import { TransactionType, useTransactions } from '../../hooks/UseTransactions';
 
 
 Modal.setAppElement('#root');
 
 export const NewTransactionModal: React.FC<{ isOpen: boolean, onRequestClose: () => void }> = (props) => {
 
-  const { data, setData } = useContext(TransactionContext);
+  const { data, setData } = useTransactions();
 
   const [type, setType] = useState('deposit');
   const [title, setTitle] = useState('');

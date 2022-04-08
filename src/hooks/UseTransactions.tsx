@@ -1,5 +1,5 @@
-import { createContext, ReactNode, useEffect, useState } from 'react';
-import { api } from './services/api';
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import { api } from '../services/api';
 
 export type TransactionType = {
   id: number;
@@ -20,7 +20,7 @@ const initialState: PropsTransactionsContext = {
   setData: () => { }
 };
 
-export const TransactionContext = createContext<PropsTransactionsContext>(initialState);
+const TransactionContext = createContext<PropsTransactionsContext>(initialState);
 
 export const TransactionsProvider: React.FC = ({ children }) => {
   const [data, setData] = useState(initialState.data)
@@ -29,4 +29,9 @@ export const TransactionsProvider: React.FC = ({ children }) => {
       {children}
     </TransactionContext.Provider>
   )
+}
+
+export const useTransactions = () => {
+  const context = useContext(TransactionContext);
+  return context;
 }

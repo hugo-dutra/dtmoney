@@ -4,7 +4,7 @@ import { GlobalStyle } from "./styles/global";
 
 import { useEffect, useState } from "react";
 import { NewTransactionModal } from "./components/NewTransactionModal";
-import { TransactionContext, TransactionsProvider } from "./TransactionsContext";
+import { TransactionsProvider } from "./hooks/UseTransactions";
 import { api } from "./services/api";
 
 export const App = () => {
